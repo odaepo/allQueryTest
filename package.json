@@ -1,5 +1,5 @@
 {
-  "name": "allQuery for Symfony (initial Test)",
+  "name": "all_query_test",
   "version": "1.0.0",
   "description": "initial test for allQuery bundle for symfony",
   "main": "index.js",
@@ -14,8 +14,9 @@
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack": "~1.13.1",
+    "webpack-dev-server": "~1.14.1",
+    "babel-cli": "~6.10.1"
   },
   "dependencies": {
     "babel-preset-stage-1": "^6.1.18",

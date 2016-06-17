@@ -6,6 +6,69 @@
   </head>
   <body>
     <div class="container"></div>
+
+
+
+
+
+
+    <hr>
+    <hr>
+    <hr>
+
+    <div></div>
+    <h1>Three query</h1>
+    This is an initial interface for buildiong a query  (using Doctrine ORM).<br>
+    Suppose you has Ta... Tz Tables.<br>
+    You can ask (BUILD) a query starting only fron T1, T2, T3, t9<br>
+    T1 is connected (one to many or one to one) to tables T4, T5, T6<br>
+    T2 is connected to tables T7, T8<br>
+    T3 is connected with no tables.<br>
+    T4 to T9,T10<br>
+    T5 to T11<br>
+    T6 to none<br>
+    T7, T8, T10,T11,  are connected to no table.<br>
+    T11 is connected with T1 (creating a loop!)<br>
+
+    <table border=1>
+      <tr>
+        <td rowspan=4>T1</td><td rowspan=2> ->T4  </td><td> ->T9</td><td>->T12 (->T1) </td>
+      </tr>
+
+      <tr>
+        <td > ->T10 </td>
+      </tr>
+
+      <tr>
+        <td > ->T5 </td><td>  ->T11 </td>
+      </tr>
+
+      <tr>
+        <td > ->T6 </td>
+      </tr>
+
+
+
+      <tr>
+        <td rowspan=2>T2 </td><td>-> T7   </td>
+      </tr>
+
+      <tr>
+        <td >-> t8 </td>
+      </tr>
+
+      <tr>
+        <td >T3 </td>
+      </tr>
+
+    </table>
+
+
+
   </body>
   <script src="bundle.js"></script>
+
+
+
+
 </html>
