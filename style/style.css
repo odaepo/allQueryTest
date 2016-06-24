@@ -1,0 +1,16 @@
+table.elementoAlbero{
+    border: 3px;
+    border-width: 3px;
+    border-color: #0000cc;
+    border-bottom-style: double;
+    border-style: dotted;
+}
+
+.secondPart{
+    border: 3px;
+    border-width: 3px;
+    border-color: #0b97c4;
+    border-bottom-style: double;
+    border-style: dotted;
+
+}

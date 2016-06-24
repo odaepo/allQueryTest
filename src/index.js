@@ -29,14 +29,14 @@ var initialState={
     queryOptions
 };
 
-
+var myStore=createStore(reducers,initialState,redux.compose(
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+));
 //var store = require('configureStore').configure();
 //var store = require('./store/configureStore.jsx').configure(initialState);
 
 ReactDOM.render(
-  <Provider store={createStore(reducers,initialState,redux.compose(
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-))}>
+  <Provider store={myStore}>
     <App />
   </Provider>
   , document.querySelector('.container'));

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Util from '../api/utils';
 
 
 import Select from '../containers/select';
@@ -13,38 +14,50 @@ class TreeElement extends Component {
     }
 
     render() {
+        var idElement=this.props.idElement;
+        var queryMetaData=this.props.queryMetaData;
+
+
         var select;
-        var test='ok';
-
-        var optionsArray= [
-        {key:1, value:'uno', seleccted:0},
-        {key:2, value:'due', seleccted:1},
-        {key:3, value:'tre', seleccted:0 }
-        ];
-
-        var valueSelected=2;
+        Util.logga('okk!');
+        var optionsArray=Util.getOptionsInID(idElement,queryMetaData);
+        var valueSelected=Util.getValueSelectedInID(idElement,queryMetaData);
 
 
-        console.log('--------------------------');
+
+
+
+//var TodoAPI = require('TodoAPI');
+//  TodoAPI.setTodos(this.state.todos);
+        console.log('----------------quii----------');
         console.log(optionsArray);
-        console.log('--------------------------');
 
-        if(this.props.idParent==0){
-            test='inizio';
-            select=<Select optiionsAr={optionsArray} valueSelected={valueSelected} />;
-        }
-        select=<Select optiionsAr={optionsArray} valueSelected={valueSelected} />;
+
+        console.log('--------------------------');
+        //var valueSelected=2;
+             select=<Select idElement={idElement} optiionsAr={optionsArray} valueSelected={valueSelected} />;
 
 
 
         return (
-            <div>
-                {test}
-                {select}
-                idpadre: {this.props.idParent}
-            <br />
+        <table className="elementoAlbero">
+            <tbody>
+            <tr>
+                <td>
+                    <div>
 
-            </div>
+                        {select}
+                        [id:  {this.props.idElement}]
+                        [selected: {valueSelected}]
+                        <br />
+
+                    </div>
+
+                </td>
+                <td className="secondPart">Doe</td>
+            </tr>
+            </tbody>
+        </table>
 
         )
     }
@@ -54,7 +67,8 @@ function mapStateToProps(state) {
     // Whatever is returned will show up as props
     // inside of BookList
     return {
-        queryOptions: state.queryOptions
+        queryOptions: state.queryOptions,
+        queryMetaData:state.queryMetaData
     };
 }
 
