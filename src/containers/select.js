@@ -10,37 +10,40 @@ import { setEntityInSelect } from '../actions/index';
 class Select extends Component {
     constructor(props){
         super(props);
-        //this.onChangeSelect=this.onChangeSelect().bind(this);
+        this.onChangeSelect=this.onChangeSelect.bind(this);
     }
 
-    onChangeSelect(){
-
-
-        //let { dispatch } = this.props;
-        //let action=setEntityInSelect(1,2);
-        //this.props.setEntityInSelect(1,2);
-        //dispatch(action);
-        //console.log('pippo--ac');
-
-        //this.props.setEntityInSelect(1,2);
-        //{ dispatch } = store
-        //onClick={() => this.props.selectBook(book)}
-        //{term:event.target.value}
-        console.log('pippo--ac');
+    onChangeSelect(event){
+        this.props.setEntityInSelect(this.props.idElement,event.target.value); //id, entityID
     }
 
     render(){
-        console.log('--------------------------');
+        /*
+         {this.state.itemTitle === item ? "active" : "" }
+         */
+        console.log('--- select.js : 21 -------------');
 
         console.log(this.props.valueSelected);
-        console.log('-----------------------2---');
+        console.log('--- select.js : 24 -------------');
+        var idl=this.props.valueSelected;
+        console.log('--- select.js : 26 -------------');
 
+        console.log(idl);
         var options=this.props.optiionsAr.map(function(op){
-            return (<option key={op.key} value={op.key}>{op.value}</option>);
+            if(op.key==idl){
+                return (<option key={op.key} value={op.key} selected>{op.value}</option>);
+                }
+            else{
+                return (<option key={op.key} value={op.key} >{op.value}</option>);
+            }
+
+
+
         });
 
+        //<select value={this.props.valueSelected} onChange={() => this.props.setEntityInSelect(1,2)}>
         return(
-                <select value={this.props.valueSelected} onChange={() => this.props.setEntityInSelect(1,2)}>
+                <select value={this.props.valueSelected} onChange={this.onChangeSelect}>
                     {options}
                 </select>
         )

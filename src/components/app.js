@@ -22,15 +22,17 @@ export default class App extends Component {
       //props.treeWhere={};
       //<TreeElement idElement={1}{... props}/>
 
-      console.log(this.props);
+      //console.log(this.props);
 
-
+/*
+ <BookDetail />
+ <BookList />
+ <UIoptions />
+ <hr/>
+ */
     return (
       <div>
-          <BookDetail />
-          <BookList />
           <UIoptions />
-          <hr/>
           <TreeElement idElement={1}/>
       </div>
     );

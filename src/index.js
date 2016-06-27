@@ -17,7 +17,17 @@ var queryMetaData={
         times: 0,
         fieldToShow: {},
         treeWhere: {}
-    }
+    },
+    2:{
+        id:2,
+        idPArent: 1,
+        order: 1,
+        entityId: 4,
+        times: 0,
+        fieldToShow: {},
+        treeWhere: {}
+    },
+
 }
 
 var queryOptions={
