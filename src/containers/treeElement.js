@@ -7,59 +7,78 @@ import Util from '../api/utils';
 import Select from '../containers/select';
 
 class TreeElement extends Component {
+    /*
     constructor(props){
         super(props);
     }
+    */
 
     render() {
         var idElement=this.props.idElement;
         var queryMetaData=this.props.queryMetaData;
+        var queryOptions=this.props.queryOptions;
 
-        var select;
-        Util.logga('okk!');
-        var optionsArray=Util.getOptionsInID(idElement,queryMetaData);
-        var valueSelected=Util.getValueSelectedInID(idElement,queryMetaData);
-        var objsChildren=Util.getChildren(idElement,queryMetaData);
-
-
-        var elementChildren=objsChildren.map(function(ch){
-            //
-            console.log('-----------------------!!!!!!!!!!!!!!!!!!!!!!!!!!--------- ---------------id elemento:'+ch);
-            return (<TreeElement idElement={ch} key={ch} />);
-        });
-
-
-        console.log('------2----------selezionato--------');
+        console.log('console.log(queryMetaData); treeElements - 18');
         console.log(queryMetaData);
-        console.log(objsChildren);
-        console.log('-------2---------selezionato--------');
+        console.log('console.log(queryMetaData); treeElements - 18b');
+        var select;
+        var optionsArray=Util.getOptionsInID(idElement,queryMetaData);
+        console.log('treeElements - 22 - idElement:'+idElement);
+        var valueSelected=Util.getValueSelectedInID(idElement,queryMetaData);
+        console.log('treeElements - 24 - idElement:'+idElement);
+        var objsChildren=Util.getChildren(idElement,queryMetaData);
+        console.log('treeElements - 26 - idElement:'+idElement);
 
-//var TodoAPI = require('TodoAPI');
-//  TodoAPI.setTodos(this.state.todos);
-        console.log('----------------quii----------');
-        console.log(optionsArray);
-        console.log('--------------------------');
-        //var valueSelected=2;
-             select=<Select idElement={idElement} optiionsAr={optionsArray} valueSelected={valueSelected} />;
-        return (
-        <table className="elementoAlbero">
-            <tbody>
-            <tr>
-                <td>
-                    <div>
-                        {select}
-                        [id:  {this.props.idElement}]
-                        [selected: {valueSelected}]
-                        <br />
-                    </div>
-                </td>
-                <td className="secondPart">
-                    {elementChildren}
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        )
+        console.log('figli  di:'+idElement);
+        console.log(objsChildren);
+        var elementChildren=objsChildren.map(function(ch){
+            return (<TreeElement idElement={ch} key={ch} queryMetaData={queryMetaData} queryOptions={queryOptions} />);
+        });
+              select=<Select idElement={idElement} optiionsAr={optionsArray} valueSelected={valueSelected} queryMetaData={queryMetaData} />;
+//alert(queryOptions.directionUI);
+
+        if(queryOptions.directionUI=='horizontal'){
+            return (
+                <table className="elementoAlbero">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                {queryOptions.directionUI}
+                                {select}
+                                 <br />
+                            </div>
+                        </td>
+
+                        <td className="secondPart">
+                            {elementChildren}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            )
+        }
+        else {
+            return (
+                <table className="elementoAlbero">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                {select}
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="secondPart">
+                            {elementChildren}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            )
+        }
     }
 }
 
@@ -67,8 +86,8 @@ function mapStateToProps(state) {
     // Whatever is returned will show up as props
     // inside of BookList
     return {
-        queryOptions: state.queryOptions,
-        queryMetaData:state.queryMetaData
+        //queryOptions: state.queryOptions,
+        //queryMetaData:state.queryMetaData
     };
 }
 

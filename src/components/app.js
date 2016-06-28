@@ -1,5 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import BookList from '../containers/book-list';
 import BookDetail from '../containers/book-detail';
@@ -9,20 +11,8 @@ import { arrayEntities } from '../metadataDBstructure.js'
 import UIoptions from '../containers/ui_options';
 import TreeElement from '../containers/treeElement';
 
-export default class App extends Component {
+class App extends Component {
   render() {
-      //console.log(arrayEntities);
-      //var props={};
-      //props.id=1;
-      //props.idParent=0;
-      //props.order=0;
-      //props.idEntity=0;
-      //props.times=0;
-      //props.fields={};
-      //props.treeWhere={};
-      //<TreeElement idElement={1}{... props}/>
-
-      //console.log(this.props);
 
 /*
  <BookDetail />
@@ -33,8 +23,33 @@ export default class App extends Component {
     return (
       <div>
           <UIoptions />
-          <TreeElement idElement={1}/>
+          <TreeElement idElement={1} queryMetaData={this.props.queryMetaData} queryOptions={this.props.queryOptions} />
       </div>
     );
   }
 }
+
+
+
+function mapStateToProps(state) {
+    // Whatever is returned will show up as props
+    // inside of BookList
+    return {
+        queryOptions: state.queryOptions,
+        queryMetaData:state.queryMetaData
+    };
+}
+
+// Anything returned from this function will end up as props
+// on the BookList container
+function mapDispatchToProps(dispatch) {
+    // Whenever selectBook is called, the result shoudl be passed
+    // to all of our reducers
+    //return bindActionCreators({changeOrientation: changeOrientation}, dispatch);
+}
+
+
+// Promote BookList from a component to a container - it needs to know
+// about this new dispatch method, selectBook. Make it available
+// as a prop.
+export default connect(mapStateToProps, mapDispatchToProps)(App);

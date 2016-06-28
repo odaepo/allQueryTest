@@ -8,8 +8,8 @@ const rootReducer = combineReducers({
   books: BooksReducer,
   activeBook: ActiveBook,
 
-  queryMetaData:  QueryMetaData,
-  queryOptions: QueryOptions
+  queryOptions: QueryOptions,
+  queryMetaData:  QueryMetaData
 
 });
 

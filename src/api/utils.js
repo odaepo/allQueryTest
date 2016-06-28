@@ -3,134 +3,148 @@
 //var $ = require('jquery');
 
 import metadataDBstructure from '../metadataDBstructure'
-    //'../../metadataDBstructure';
+//'../../metadataDBstructure';
 
 module.exports = {
     logga: function (msg) {
-       console.log(msg);
+        console.log(msg);
     },
     logga2: function () {
 
     },
-    getMaxId: function(state){
-        var maxid=1;
+    getMaxId: function (state) {
+        var maxid = 1;
         for (var el in state) {
-            let app=state[el].id;
-            if(maxid<app){maxid=app;}
+            let app = state[el].id;
+            if (maxid < app) {
+                maxid = app;
+            }
         }
         return maxid;
     },
-    getTimes: function(idEntity,id,state){
-             //times for idEntity selected in id element in state
+    getTimes: function (idEntity, id, state) {
+        //times for idEntity selected in id element in state
         return 1;
     },
-    getChildren: function(idElement,queryMetaData){
-        console.log('--- utils.js ---- getChildren -- line 27 ---');
-        var arToreturn=[];
-
-        console.log('--- utils.js ---- getChildren -- line 31 ---');
-        console.log(queryMetaData);
-        console.log('--- utils.js ---- getChildren -- line 33 ---');
+    deleteChildren:function (idElement, queryMetaData) {
+         var arToreturn = [];
+       for (var el in queryMetaData) {
+             let app = queryMetaData[el].idPArent;
+            if (idElement == app) {
+                this.deleteChildren(queryMetaData[el].id,queryMetaData);
+                delete queryMetaData[el];
+            }
+        }
+    },
+    getChildren: function (idElement, queryMetaData) {
+        var arToreturn = [];
         for (var el in queryMetaData) {
-            let app=queryMetaData[el].idPArent;
-
-            console.log('--- utils.js ---- getChildren -- line 37 ---');
-            console.log(el);
-            console.log('--- utils.js ---- getChildren -- line 39 ---');
-            if(idElement==app){
+            let app = queryMetaData[el].idPArent;
+            if (idElement == app) {
                 arToreturn.push(queryMetaData[el].id);
             }
         }
-        console.log(arToreturn);
-return arToreturn;
-        /*
+        return arToreturn;
+    },
+    stateClone: function (obj) {
+            //var clonedArray = JSON.parse(JSON.stringify(nodesArray))
+            var copy;
 
-        var objs=queryMetaData.filter((obj)=>{
-            return (obj.idPArent==idElement);
-        });
+            // Handle the 3 simple types, and null or undefined
+            if (null == obj || "object" != typeof obj) return obj;
 
-
-
-
-        var arToreturn=[];
-        var findChild=function(element, index, array){
-            if( element['idPArent'] == idElement ){
-
+            // Handle Date
+            if (obj instanceof Date) {
+                copy = new Date();
+                copy.setTime(obj.getTime());
+                return copy;
             }
-            var el={};
-            el['key']=element['id'];
-            el['value']=element['name'];
-            //     console.log(el);
 
+            // Handle Array
+            if (obj instanceof Array) {
+                copy = [];
+                for (var i = 0, len = obj.length; i < len; i++) {
+                    copy[i] = this.stateClone(obj[i]);
+                }
+                return copy;
+            }
 
+            // Handle Object
+            if (obj instanceof Object) {
+                copy = {};
+                for (var attr in obj) {
+                    if (obj.hasOwnProperty(attr)) copy[attr] = this.stateClone(obj[attr]);
+                }
+                return copy;
+            }
 
-        };
-
-        queryMetaData.forEach(findChild);
-
-            */
-
-
-
-    },
-    getOptionsInID: function(idElement,queryMetaData){
-        if(idElement==1){
-            //return option first select
-            //console.log('ecco!');
-            //console.log(metadataDBstructure);
-            var elFiltered=metadataDBstructure.arrayEntities.filter((obj)=>{return obj.first;});
-            //console.log(elFiltered);
-            //console.log('filtrati');
-
-            var arToreturn=[];
-            var logArrayElements=function(element, index, array){
-
-                var el={};
-                el['key']=element['id'];
-                el['value']=element['name'];
-               //     console.log(el);
-                arToreturn.push(el);
-
-
-            };
-
-            elFiltered.forEach(logArrayElements);
-
-            //console.log('----- array select iniziale -----------------------------------');
-            //console.log(arToreturn);
-            //console.log('----- array select iniziale ------------------------------ fine ----');
-            return arToreturn;
-
-
-        }
-        else{
-            var elFiltered=metadataDBstructure.arrayEntities.filter((obj)=>{return obj.first;});
-            //console.log(elFiltered);
-            //console.log('filtrati');
-
-            var arToreturn=[];
-            var logArrayElements=function(element, index, array){
-
-                var el={};
-                el['key']=element['id'];
-                el['value']=element['name'];
-                //     console.log(el);
-                arToreturn.push(el);
-
-
-            };
-
-            elFiltered.forEach(logArrayElements);
-
-            //console.log('----- array select iniziale -----------------------------------');
-            //console.log(arToreturn);
-            //console.log('----- array select iniziale ------------------------------ fine ----');
-            return arToreturn;
-        }
+            throw new Error("Unable to copy obj! Its type isn't supported.");
 
 
     },
-    getValueSelectedInID: function(idElement,queryMetaData){
-        return null;
+    getOptionsInID: function (idElement, queryMetaData) {
+        console.log('!!!!!!!!!!!!!!!!!!!!');
+        console.log(queryMetaData);
+        console.log(idElement);
+        console.log('!!!!!!!!!!!!!!!!!!!!');
+
+        if (idElement == 1) {
+             var elFiltered = metadataDBstructure.arrayEntities.filter((obj)=> {
+                return obj.first;
+            });
+            var arToreturn = [];
+
+
+            var el = {};
+            el['key'] = 0;
+            el['value'] =' ';
+            arToreturn.push(el);
+
+
+            var logArrayElements = function (element, index, array) {
+                var el = {};
+                el['key'] = element['id'];
+                el['value'] = element['name'];
+                arToreturn.push(el);
+            };
+            elFiltered.forEach(logArrayElements);
+            return arToreturn;
+        }//if (idElement == 1) {
+        else {
+            console.log('idElement');
+            console.log(idElement);
+            console.log('queryMetaData');
+            console.log(queryMetaData);
+            console.log('idParent');
+            console.log(idParent);
+             var idParent=queryMetaData[idElement]['idPArent'];//----------
+            var idPaerentEntity=queryMetaData[idParent]['entityId'];
+
+
+            var toEntityArray=metadataDBstructure.arrayEntities[idPaerentEntity]['next'];
+
+            var arToreturn = [];
+
+            var el = {};
+            el['key'] = 0;
+            el['value'] =' ';
+            arToreturn.push(el);
+
+            for (var key in toEntityArray) {
+                var el = {};
+                el['key'] =  key;
+                el['value'] = toEntityArray[key];
+                arToreturn.push(el);
+            }
+
+             return arToreturn;
+        }
+
+
+    },
+    getValueSelectedInID: function (idElement, queryMetaData) {
+        var entityId=queryMetaData[idElement]['entityId'];
+        if (!entityId)return 0;
+        else return entityId;
     }
 };

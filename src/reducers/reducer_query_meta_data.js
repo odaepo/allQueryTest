@@ -3,61 +3,62 @@ import metadataDBstructure from '../metadataDBstructure'
 import Util from '../api/utils';
 
 export default function(state = null, action) {
+    var stateCloned=Util.stateClone(state);
     switch(action.type) {
         case SET_ENTITY_IN_SELECT:
-            console.log('--- reducer_query_meta_data -- line: 8 ----');
-            console.log(action.id);
-            console.log(action.idEntity);
-            console.log(state);
-            console.log(metadataDBstructure);
-            console.log('--- reducer_query_meta_data -- line: 13 ----');
-
             //aggiorna lo stato del componente selezionato
-            state[action.id].entityId=action.idEntity;
-            state[action.id].fieldToShow=metadataDBstructure.arrayEntities[action.idEntity].fields;
-            state[action.id].times=Util.getTimes(action.idEntity,action.id,state); //times for idEntity selected in id element in state
-
+            stateCloned[action.id].entityId=action.idEntity;
+            stateCloned[action.id].fieldToShow=metadataDBstructure.arrayEntities[action.idEntity].fields;
+            stateCloned[action.id].times=Util.getTimes(action.idEntity,action.id,stateCloned); //times for idEntity selected in id element in stateCloned
 
             //cancella i dati dei figli precedenti del componente selezionato
-            var chldToDelete=Util.getChildren(action.id,state);
-            console.log('--- reducer_query_meta_data -- line: 23 ----');
-            console.log(chldToDelete);
-            chldToDelete.forEach((element, index, array)=>{
-                delete state[element];
-            });
-             console.log('--- reducer_query_meta_data -- line: 25 ----');
-            console.log(state);
-            console.log('--- reducer_query_meta_data -- line: 30 ----');
+            var chldToDelete=Util.deleteChildren(action.id,stateCloned);
 
-            if(action.id==1){
-                console.log('SET_ENTITY_IN_SELECT: id componente '+action.id);
-                var newId=Util.getMaxId(state);
+             if(action.id==1){
+                var newId=Util.getMaxId(stateCloned);
                 newId++;
-                state[newId]={};
-                state[newId].id=newId;
-                state[newId].idPArent=action.id;
-                state[newId].order=1;
-                state[newId].entityId=null;
-                state[newId].times=0;
-                state[newId].fieldToShow={};
-                state[newId].treeWhere={};
+                stateCloned[newId]={};
+                stateCloned[newId].id=newId;
+                stateCloned[newId].idPArent=action.id;
+                stateCloned[newId].order=1;
+                stateCloned[newId].entityId=null;
+                stateCloned[newId].times=0;
+                stateCloned[newId].fieldToShow={};
+                stateCloned[newId].treeWhere={};
              }
-            console.log(action.id);
-            console.log(action.idEntity);
-            console.log(state);
+            else{
+                 //set a new son
+                 var IpParent=stateCloned[action.id]['idPArent'];
+                 var newId=Util.getMaxId(stateCloned);
+                 newId++;
+                 stateCloned[newId]={};
+                 stateCloned[newId].id=newId;
+                 stateCloned[newId].idPArent=IpParent;
+                 stateCloned[newId].order=1;
+                 stateCloned[newId].entityId=null;
+                 stateCloned[newId].times=0;
+                 stateCloned[newId].fieldToShow={};
+                 stateCloned[newId].treeWhere={};
 
+                 var newId=Util.getMaxId(stateCloned);
+                 newId++;
+                 stateCloned[newId]={};
+                 stateCloned[newId].id=newId;
+                 stateCloned[newId].idPArent=action.id;
+                 stateCloned[newId].order=1;
+                 stateCloned[newId].entityId=null;
+                 stateCloned[newId].times=0;
+                 stateCloned[newId].fieldToShow={};
+                 stateCloned[newId].treeWhere={};
 
+             }
 
-            /*
             return {
-                ...state,
-                completed: nextCompleted,
-                completedAt: nextCompleted ? moment().unix() : undefined
+                ...stateCloned,
             };
-            */
-            return state;
+            //return stateCloned;
         break;
     }
 
-    return state;
+    return stateCloned;
 }

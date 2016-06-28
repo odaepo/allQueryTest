@@ -21,24 +21,17 @@ class Select extends Component {
         /*
          {this.state.itemTitle === item ? "active" : "" }
          */
-        console.log('--- select.js : 21 -------------');
-
-        console.log(this.props.valueSelected);
-        console.log('--- select.js : 24 -------------');
-        var idl=this.props.valueSelected;
-        console.log('--- select.js : 26 -------------');
-
-        console.log(idl);
-        var options=this.props.optiionsAr.map(function(op){
+         var idl=this.props.valueSelected;
+         var options=this.props.optiionsAr.map(function(op){
+             /*
             if(op.key==idl){
                 return (<option key={op.key} value={op.key} selected>{op.value}</option>);
                 }
             else{
                 return (<option key={op.key} value={op.key} >{op.value}</option>);
             }
-
-
-
+            */
+             return (<option key={op.key} value={op.key} >{op.value}</option>);
         });
 
         //<select value={this.props.valueSelected} onChange={() => this.props.setEntityInSelect(1,2)}>
@@ -58,6 +51,8 @@ function mapStateToProps(state) {
     // inside of BookList
     return {
         //state: state
+        queryOptions: state.queryOptions,
+        queryMetaData:state.queryMetaData
     };
 }
 
