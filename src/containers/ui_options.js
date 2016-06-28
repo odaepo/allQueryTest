@@ -10,7 +10,7 @@ class UIoptions extends Component {
         return (
             <div
                 onClick={()=>this.props.changeOrientation()}
-            >Ok2! {this.props.queryOptions.directionUI} </div>
+            > {this.props.queryOptions.directionUI} </div>
         )
     }
 }

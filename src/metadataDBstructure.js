@@ -4,6 +4,19 @@ export var arrayEntities=[];
 
 var i;
 
+
+i=0;
+arrayEntities[i]={};
+arrayEntities[i]['id']=i;
+arrayEntities[i]['name']='';
+arrayEntities[i]['usedtime']=0; //times used in UI interface
+arrayEntities[i]['names']={}; //names in UO interface
+arrayEntities[i]['first']=0;
+arrayEntities[i]['fields']={};
+//names in UO interface\
+arrayEntities[i]['next']={};
+
+
 i=1;
 arrayEntities[i]={};
 arrayEntities[i]['id']=i;

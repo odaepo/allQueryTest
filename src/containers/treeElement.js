@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import Util from '../api/utils';
 
 import Select from '../containers/select';
+import Fields from '../containers/fields';
+
 
 class TreeElement extends Component {
     /*
@@ -44,9 +46,12 @@ class TreeElement extends Component {
                     <tr>
                         <td>
                             <div>
-                                {queryOptions.directionUI}
+
                                 {select}
                                  <br />
+                                NOME
+                                <br />
+                                <Fields idElement={idElement} queryMetaData={queryMetaData} />
                             </div>
                         </td>
 
@@ -67,6 +72,9 @@ class TreeElement extends Component {
                             <div>
                                 {select}
                                 <br />
+                                NOME
+                                <br />
+                                <Fields />
                             </div>
                         </td>
                     </tr>

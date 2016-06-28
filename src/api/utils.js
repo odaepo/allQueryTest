@@ -111,13 +111,7 @@ module.exports = {
             return arToreturn;
         }//if (idElement == 1) {
         else {
-            console.log('idElement');
-            console.log(idElement);
-            console.log('queryMetaData');
-            console.log(queryMetaData);
-            console.log('idParent');
-            console.log(idParent);
-             var idParent=queryMetaData[idElement]['idPArent'];//----------
+            var idParent=queryMetaData[idElement]['idPArent'];
             var idPaerentEntity=queryMetaData[idParent]['entityId'];
 
 
