@@ -7,6 +7,8 @@ import Util from '../api/utils';
 import Select from '../containers/select';
 import Fields from '../containers/fields';
 
+import { toggleFieldCheckBox } from '../actions/index';
+
 
 class TreeElement extends Component {
     /*
@@ -16,6 +18,7 @@ class TreeElement extends Component {
     */
 
     render() {
+        toggleFieldCheckBox(5,5);
         var idElement=this.props.idElement;
         var queryMetaData=this.props.queryMetaData;
         var queryOptions=this.props.queryOptions;
@@ -33,15 +36,36 @@ class TreeElement extends Component {
 
         console.log('figli  di:'+idElement);
         console.log(objsChildren);
-        var elementChildren=objsChildren.map(function(ch){
-            return (<TreeElementContainer idElement={ch} key={ch} />);
-        });
-              select=<Select idElement={idElement} optiionsAr={optionsArray} valueSelected={valueSelected} queryMetaData={queryMetaData} />;
+
+        if(this.props.queryOptions.directionUI=='horizontal'){
+            var elementChildren=objsChildren.map(function(ch){
+                return (
+                <tr>
+                    <td>
+                 <TreeElementContainer idElement={ch} key={ch} />
+                    </td>
+                </tr>
+                );
+            });
+        }
+       else{
+            var elementChildren=objsChildren.map(function(ch){
+                return (
+                <td>
+
+                        <TreeElementContainer idElement={ch} key={ch} />
+
+                </td>
+                );
+            });
+        }
+
+               select=<Select idElement={idElement} optiionsAr={optionsArray} valueSelected={valueSelected} queryMetaData={queryMetaData} />;
 //alert(queryOptions.directionUI);
 
-        if(queryOptions.directionUI=='horizontal'){
+        if(this.props.queryOptions.directionUI=='horizontal'){
             return (
-                <table className="elementoAlbero">
+                <table className="elementoAlbero horizontal">
                     <tbody>
                     <tr>
                         <td>
@@ -49,14 +73,25 @@ class TreeElement extends Component {
 
                                 {select}
                                  <br />
-                                NOME
-                                <br />
-                                <Fields idElement={idElement} queryMetaData={queryMetaData} />
+                                <div>
+                                    NOME
+                                    <br />
+                                    <Fields idElement={idElement} queryMetaData={queryMetaData} toggleFieldCheckBox={toggleFieldCheckBox} />
+                                </div>
+
                             </div>
                         </td>
 
                         <td className="secondPart">
-                            {elementChildren}
+
+
+                            <table>
+                                <tbody>
+                                {elementChildren}
+                                </tbody>
+                            </table>
+
+
                         </td>
                     </tr>
                     </tbody>
@@ -65,7 +100,7 @@ class TreeElement extends Component {
         }
         else {
             return (
-                <table className="elementoAlbero">
+                <table className="elementoAlbero vertical">
                     <tbody>
                     <tr>
                         <td>
@@ -74,13 +109,19 @@ class TreeElement extends Component {
                                 <br />
                                 NOME
                                 <br />
-                                <Fields />
-                            </div>
+                                <Fields idElement={idElement} queryMetaData={queryMetaData} toggleFieldCheckBox={toggleFieldCheckBox} />
+                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td className="secondPart">
-                            {elementChildren}
+                            <table>
+                                <tbody>
+                                <tr>
+                                {elementChildren}
+                                    </tr>
+                                </tbody>
+                            </table>
                         </td>
                     </tr>
                     </tbody>
@@ -111,7 +152,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     // Whenever selectBook is called, the result shoudl be passed
     // to all of our reducers
-    //return bindActionCreators({changeOrientation: changeOrientation}, dispatch);
+    return bindActionCreators({toggleFieldCheckBox: toggleFieldCheckBox}, dispatch);
+
 }
 
 

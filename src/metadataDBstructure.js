@@ -25,9 +25,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=1;
 arrayEntities[i]['fields']={
-                1:{ name:'T1.campo1', type:'string', values:{}  },
-                2:{ name:'T1.campo2', type:'string', values:{}  },
-                3:{ name:'T1.campo3', type:'string', values:{}  }
+                1:{ id:1, name:'T1.campo1', type:'string', values:{}, toShow:false  },
+                2:{ id:2, name:'T1.campo2', type:'string', values:{}, toShow:false  },
+                3:{ id:3, name:'T1.campo3', type:'string', values:{},  toShow:false  }
         };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -45,9 +45,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=1;
 arrayEntities[i]['fields']={
-    1:{ name:'T2.campo1', type:'string', values:{}  },
-    2:{ name:'T2.campo2', type:'string', values:{}  },
-    3:{ name:'T2.campo3', type:'string', values:{}  }
+    1:{ id:4, name:'T2.campo1', type:'string', values:{}, toShow:false  },
+    2:{ id:5, name:'T2.campo2', type:'string', values:{}, toShow:false  },
+    3:{ id:6, name:'T2.campo3', type:'string',values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -64,9 +64,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=1;
 arrayEntities[i]['fields']={
-    1:{ name:'T3.campo1', type:'string', values:{}  },
-    2:{ name:'T3.campo2', type:'string', values:{}  },
-    3:{ name:'T3.campo3', type:'string', values:{}  }
+    1:{ id:7 ,name:'T3.campo1', type:'string', values:{}, toShow:false  },
+    2:{ id:8 ,name:'T3.campo2', type:'string', values:{}, toShow:false  },
+    3:{ id:9 ,name:'T3.campo3', type:'string', values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -80,9 +80,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=1;
 arrayEntities[i]['fields']={
-    1:{ name:'T4.campo1', type:'string', values:{}  },
-    2:{ name:'T4.campo2', type:'string', values:{}  },
-    3:{ name:'T4.campo3', type:'string', values:{}  }
+    1:{id:10  ,name:'T4.campo1', type:'string', values:{}, toShow:false  },
+    2:{id:11  ,name:'T4.campo2', type:'string', values:{}, toShow:false  },
+    3:{id:12  ,name:'T4.campo3', type:'string',values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -98,9 +98,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=0;
 arrayEntities[i]['fields']={
-    1:{ name:'T5.campo1', type:'string', values:{}  },
-    2:{ name:'T5.campo2', type:'string', values:{}  },
-    3:{ name:'T5.campo3', type:'string', values:{}  }
+    1:{ id:13 ,name:'T5.campo1', type:'string', values:{}, toShow:false  },
+    2:{ id:14 ,name:'T5.campo2', type:'string', values:{}, toShow:false  },
+    3:{ id:15 ,name:'T5.campo3', type:'string',values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -115,9 +115,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=1;
 arrayEntities[i]['fields']={
-    1:{ name:'T6.campo1', type:'string', values:{}  },
-    2:{ name:'T6.campo2', type:'string', values:{}  },
-    3:{ name:'T6.campo3', type:'string', values:{}  }
+    1:{ id:16 ,name:'T6.campo1', type:'string', values:{}, toShow:false  },
+    2:{ id:17 ,name:'T6.campo2', type:'string', values:{}, toShow:false  },
+    3:{ id:18 ,name:'T6.campo3', type:'string',values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -133,9 +133,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=0;
 arrayEntities[i]['fields']={
-    1:{ name:'T7.campo1', type:'string', values:{}  },
-    2:{ name:'T7.campo2', type:'string', values:{}  },
-    3:{ name:'T7.campo3', type:'string', values:{}  }
+    1:{ id:19 ,name:'T7.campo1', type:'string', values:{}, toShow:false  },
+    2:{ id:20 ,name:'T7.campo2', type:'string', values:{}, toShow:false  },
+    3:{ id:21 ,name:'T7.campo3', type:'string',values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -152,9 +152,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=0;
 arrayEntities[i]['fields']={
-    1:{ name:'T8.campo1', type:'string', values:{}  },
-    2:{ name:'T8.campo2', type:'string', values:{}  },
-    3:{ name:'T8.campo3', type:'string', values:{}  }
+    1:{ id:22 ,name:'T8.campo1', type:'string', values:{}, toShow:false  },
+    2:{ id:23 ,name:'T8.campo2', type:'string', values:{}, toShow:false  },
+    3:{ id:24 ,name:'T8.campo3', type:'string',values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -170,9 +170,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=0;
 arrayEntities[i]['fields']={
-    1:{ name:'T9.campo1', type:'string', values:{}  },
-    2:{ name:'T9.campo2', type:'string', values:{}  },
-    3:{ name:'T9.campo3', type:'string', values:{}  }
+    1:{ id:25 ,name:'T9.campo1', type:'string', values:{}, toShow:false  },
+    2:{ id:26 ,name:'T9.campo2', type:'string', values:{}, toShow:false  },
+    3:{ id:27 ,name:'T9.campo3', type:'string',values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -188,9 +188,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=0;
 arrayEntities[i]['fields']={
-    1:{ name:'T10.campo1', type:'string', values:{}  },
-    2:{ name:'T10.campo2', type:'string', values:{}  },
-    3:{ name:'T10.campo3', type:'string', values:{}  }
+    1:{ id:28 ,name:'T10.campo1', type:'string', values:{}, toShow:false  },
+    2:{ id:29 ,name:'T10.campo2', type:'string', values:{}, toShow:false  },
+    3:{ id:30 ,name:'T10.campo3', type:'string',values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -206,9 +206,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=0;
 arrayEntities[i]['fields']={
-    1:{ name:'T11.campo1', type:'string', values:{}  },
-    2:{ name:'T11.campo2', type:'string', values:{}  },
-    3:{ name:'T11.campo3', type:'string', values:{}  }
+    1:{ id:31 ,name:'T11.campo1', type:'string', values:{}, toShow:false  },
+    2:{ id:32 ,name:'T11.campo2', type:'string', values:{}, toShow:false  },
+    3:{ id:33 ,name:'T11.campo3', type:'string',values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
@@ -224,9 +224,9 @@ arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=0;
 arrayEntities[i]['fields']={
-    1:{ name:'T12.campo1', type:'string', values:{}  },
-    2:{ name:'T12.campo2', type:'string', values:{}  },
-    3:{ name:'T12.campo3', type:'string', values:{}  }
+    1:{ id:34 ,name:'T12.campo1', type:'string', values:{}, toShow:false  },
+    2:{ id:35 ,name:'T12.campo2', type:'string', values:{}, toShow:false  },
+    3:{ id:36 ,name:'T12.campo3', type:'string',values:{}, toShow:false  }
 };
 //names in UO interface\
 arrayEntities[i]['next']={};

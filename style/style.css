@@ -1,4 +1,12 @@
-table.elementoAlbero{
+table.horizontal{
+    border: 3px;
+    border-width: 3px;
+    border-color: #0000cc;
+    border-bottom-style: double;
+    border-style: dotted;
+}
+
+table.vertical{
     border: 3px;
     border-width: 3px;
     border-color: #0000cc;
@@ -7,6 +15,7 @@ table.elementoAlbero{
 }
 
 .secondPart{
+    vertical-align: top;
     padding: 10px;
     border: 3px;
     border-width: 3px;
@@ -15,3 +24,4 @@ table.elementoAlbero{
     border-style: dotted;
 
 }
+

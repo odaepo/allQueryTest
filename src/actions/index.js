@@ -1,6 +1,8 @@
 
 export const CHANGE_ORIENTATION = 'CHANGE_ORIENTATION';
 export const SET_ENTITY_IN_SELECT='SET_ENTITY_IN_SELECT';
+export const TOGGLE_FIELD_CHECKBOX='TOGGLE_FIELD_CHECKBOX';
+
 
 export function selectBook(book) {
   // selectBook is an ActionCreator, it needs to return an action,
@@ -13,6 +15,17 @@ export function selectBook(book) {
 }
 
 
+export function toggleFieldCheckBox(idElement,idField) {
+  // selectBook is an ActionCreator, it needs to return an action,
+  // an object with a type property.
+
+  return {
+    type: TOGGLE_FIELD_CHECKBOX,
+    idElement,
+    idField
+  };
+}
+
 export function setEntityInSelect(id,idEntity) {
   // selectBook is an ActionCreator, it needs to return an action,
   // an object with a type property.
@@ -23,6 +36,7 @@ export function setEntityInSelect(id,idEntity) {
     idEntity
   };
 }
+
 
 
 export function changeOrientation(){
