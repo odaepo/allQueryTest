@@ -34,7 +34,7 @@ class TreeElement extends Component {
         console.log('figli  di:'+idElement);
         console.log(objsChildren);
         var elementChildren=objsChildren.map(function(ch){
-            return (<TreeElement idElement={ch} key={ch} queryMetaData={queryMetaData} queryOptions={queryOptions} />);
+            return (<TreeElementContainer idElement={ch} key={ch} />);
         });
               select=<Select idElement={idElement} optiionsAr={optionsArray} valueSelected={valueSelected} queryMetaData={queryMetaData} />;
 //alert(queryOptions.directionUI);
@@ -90,12 +90,19 @@ class TreeElement extends Component {
     }
 }
 
+
+
+const TreeElementContainer = connect(
+    mapStateToProps
+)(TreeElement);
+
+
 function mapStateToProps(state) {
     // Whatever is returned will show up as props
     // inside of BookList
     return {
-        //queryOptions: state.queryOptions,
-        //queryMetaData:state.queryMetaData
+        queryOptions: state.queryOptions,
+        queryMetaData:state.queryMetaData
     };
 }
 
@@ -111,7 +118,7 @@ function mapDispatchToProps(dispatch) {
 // Promote BookList from a component to a container - it needs to know
 // about this new dispatch method, selectBook. Make it available
 // as a prop.
-export default connect(mapStateToProps, mapDispatchToProps)(TreeElement);
+export default connect(mapStateToProps, mapDispatchToProps)(TreeElementContainer);
 
 
 

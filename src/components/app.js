@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <div>
           <UIoptions />
-          <TreeElement idElement={1} queryMetaData={this.props.queryMetaData} queryOptions={this.props.queryOptions} />
+          <TreeElementContainer idElement={1}  />
       </div>
     );
   }
@@ -48,6 +48,11 @@ function mapDispatchToProps(dispatch) {
     //return bindActionCreators({changeOrientation: changeOrientation}, dispatch);
 }
 
+
+
+const TreeElementContainer = connect(
+    mapStateToProps
+)(TreeElement);
 
 // Promote BookList from a component to a container - it needs to know
 // about this new dispatch method, selectBook. Make it available
