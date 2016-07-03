@@ -27,7 +27,7 @@ class Field extends Component {
 
     render(){
 
-        var checked =0;
+        var checked =this.props.queryMetaData[this.props.idElement].fieldToShow[this.props.idField].toShow;
 
             if(checked){
                 return (

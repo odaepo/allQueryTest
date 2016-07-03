@@ -72,12 +72,14 @@ export default function(state = null, action) {
             //return stateCloned;
         break;
         case TOGGLE_FIELD_CHECKBOX:
-
             //prendi l'array di oggetti:
             //stateCloned[action.idElement].fieldToShow (   2:{ id:23 ,name:'T8.campo2', type:'string', values:{}, toShow:false  },
             //prendi l'oggetto che ha la coppia id =action.idField
             //inverti il valote toShow  (es. id:23 -> toshow:...
 
+        console.log(stateCloned[action.idElement].fieldToShow[action.idField].toShow);
+            stateCloned[action.idElement].fieldToShow[action.idField].toShow=!(stateCloned[action.idElement].fieldToShow[action.idField].toShow);
+    console.log(stateCloned[action.idElement].fieldToShow[action.idField].toShow);
             return {
                 ...stateCloned,
             };
