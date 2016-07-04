@@ -1,5 +1,9 @@
 import { SET_ENTITY_IN_SELECT } from '../actions/index';
 import { TOGGLE_FIELD_CHECKBOX } from '../actions/index';
+import { SET_CONTAIN_IN_FIELD } from '../actions/index';
+import { SET_NOT_CONTAIN_IN_FIELD } from '../actions/index';
+
+
 import metadataDBstructure from '../metadataDBstructure'
 import Util from '../api/utils';
 
@@ -71,15 +75,36 @@ export default function(state = null, action) {
             };
             //return stateCloned;
         break;
+
+
+
+
+        case SET_CONTAIN_IN_FIELD:
+            stateCloned[action.idElement].fieldToShow[action.idField].contain=action.txt;
+            return {
+                ...stateCloned,
+            };
+
+            break;
+
+        case SET_NOT_CONTAIN_IN_FIELD:
+            stateCloned[action.idElement].fieldToShow[action.idField].notContain=action.txt;
+            return {
+                ...stateCloned,
+            };
+
+            break;
+
+
         case TOGGLE_FIELD_CHECKBOX:
             //prendi l'array di oggetti:
             //stateCloned[action.idElement].fieldToShow (   2:{ id:23 ,name:'T8.campo2', type:'string', values:{}, toShow:false  },
             //prendi l'oggetto che ha la coppia id =action.idField
             //inverti il valote toShow  (es. id:23 -> toshow:...
 
-        console.log(stateCloned[action.idElement].fieldToShow[action.idField].toShow);
+
             stateCloned[action.idElement].fieldToShow[action.idField].toShow=!(stateCloned[action.idElement].fieldToShow[action.idField].toShow);
-    console.log(stateCloned[action.idElement].fieldToShow[action.idField].toShow);
+
             return {
                 ...stateCloned,
             };
