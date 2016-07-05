@@ -9,10 +9,11 @@ module.exports = {
   },
   module: {
     loaders: [{
-      exclude: /node_modules/,
+      exclude: ["node_modules", "src/metadataDBstructure.js"],
       loader: 'babel'
     }]
   },
+
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
