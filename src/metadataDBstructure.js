@@ -1,6 +1,7 @@
 
 
 export var arrayEntities=[];
+export var arcToEntity=[];
 
 var i;
 
@@ -31,10 +32,12 @@ arrayEntities[i]['fields']={
         };
 //names in UO interface\
 arrayEntities[i]['next']={};
-arrayEntities[i]['next'][4]='to T4';
-arrayEntities[i]['next'][5]='to T5';
-arrayEntities[i]['next'][6]='to T6';
-
+arrayEntities[i]['next'][1]='to T4';
+arcToEntity[1]=4;
+arrayEntities[i]['next'][2]='to T5';
+arcToEntity[2]=5;
+arrayEntities[i]['next'][3]='to T6';
+arcToEntity[3]=6;
 
 
 i=2;
@@ -51,8 +54,10 @@ arrayEntities[i]['fields']={
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
-arrayEntities[i]['next'][7]='to T7';
-arrayEntities[i]['next'][8]='to T8';
+arrayEntities[i]['next'][4]='to T7';
+arcToEntity[4]=7;
+arrayEntities[i]['next'][5]='to T8';
+arcToEntity[5]=8;
 
 
 
@@ -84,10 +89,12 @@ arrayEntities[i]['fields']={
     11:{id:11  ,name:'T4.campo2', type:'string', values:{}, toShow:false, contain:'' , notContain:'', showFilter:false  },
     12:{id:12  ,name:'T4.campo3', type:'string',values:{}, toShow:false, contain:'' , notContain:'', showFilter:false  }
 };
-//names in UO interface\
+//names in UO interface
 arrayEntities[i]['next']={};
-arrayEntities[i]['next'][9]='to T9';
-arrayEntities[i]['next'][10]='to T10';
+arrayEntities[i]['next'][6]='to T9';
+arcToEntity[6]=9;
+arrayEntities[i]['next'][7]='to T10';
+arcToEntity[7]=10;
 
 
 i=5;
@@ -104,8 +111,8 @@ arrayEntities[i]['fields']={
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
-arrayEntities[i]['next'][11]='to T11';
-
+arrayEntities[i]['next'][8]='to T11';
+arcToEntity[8]=11;
 
 i=6;
 arrayEntities[i]={};
@@ -176,8 +183,8 @@ arrayEntities[i]['fields']={
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
-arrayEntities[i]['next'][12]='to T12';
-
+arrayEntities[i]['next'][9]='to T12';
+arcToEntity[9]=12;
 
 
 i=10;
@@ -230,7 +237,9 @@ arrayEntities[i]['fields']={
 };
 //names in UO interface\
 arrayEntities[i]['next']={};
- arrayEntities[i]['next'][1]='to T1';
+ arrayEntities[i]['next'][10]='to T1';
+arcToEntity[10]=1;
+
 
 module.exports = {
     arrayEntities:arrayEntities
