@@ -4,7 +4,10 @@ import { SET_CONTAIN_IN_FIELD } from '../actions/index';
 import { SET_NOT_CONTAIN_IN_FIELD } from '../actions/index';
 
 
-import metadataDBstructure from '../metadataDBstructure'
+import {arrayEntities,arcToEntity} from '../metadataDBstructure'
+
+
+
 import Util from '../api/utils';
 
 export default function(state = null, action) {
@@ -12,23 +15,32 @@ export default function(state = null, action) {
     switch(action.type) {
         case SET_ENTITY_IN_SELECT:
             //aggiorna lo stato del componente selezionato
-
+            Util.logga('uno');
             if(action.idEntity==0) {
                 stateCloned[action.id].entityId=null;
                 stateCloned[action.id].fieldToShow={};
                 stateCloned[action.id].times=1;
             }
             else{
-                stateCloned[action.id].entityId=action.idEntity;
-                stateCloned[action.id].fieldToShow=metadataDBstructure.arrayEntities[action.idEntity].fields;
-                stateCloned[action.id].times=Util.getTimes(action.idEntity,action.id,stateCloned); //times for idEntity selected in id element in stateCloned
+                Util.logga('uno1');
+                var idEntity=arcToEntity[action.arcId];
+                Util.logga('uno2');
+                stateCloned[action.id].entityId=idEntity;
+                stateCloned[action.id].arcId=action.arcId;
+                Util.logga('uno3');
+                stateCloned[action.id].fieldToShow=arrayEntities[idEntity].fields;
+                Util.logga('uno4');
+                stateCloned[action.id].times=Util.getTimes(idEntity,action.id,stateCloned); //times for idEntity selected in id element in stateCloned
+                Util.logga('uno');
             }
-
+            Util.logga('due');
             //cancella i dati dei figli precedenti del componente selezionato
             var chldToDelete=Util.deleteChildren(action.id,stateCloned);
 
              if(action.id==1){
                 if(action.idEntity!=0){
+                    var idEntity=arcToEntity[action.idEntity];
+
                     var newId=Util.getMaxId(stateCloned);
                     newId++;
                     stateCloned[newId]={};

@@ -2,7 +2,8 @@
 
 //var $ = require('jquery');
 
-import metadataDBstructure from '../metadataDBstructure'
+import {arrayEntities,arcToEntity} from '../metadataDBstructure'
+
 //'../../metadataDBstructure';
 
 module.exports = {
@@ -88,8 +89,41 @@ module.exports = {
         console.log(idElement);
         console.log('!!!!!!!!!!!!!!!!!!!!');
 
+
         if (idElement == 1) {
-             var elFiltered = metadataDBstructure.arrayEntities.filter((obj)=> {
+
+
+
+
+            var idParent=0;
+            var idPaerentEntity=0;
+
+
+            var toEntityArray=arrayEntities[idPaerentEntity]['next'];
+
+            var arToreturn = [];
+
+            var el = {};
+            el['key'] = 0;
+            el['value'] =' ';
+            arToreturn.push(el);
+
+            for (var key in toEntityArray) {
+                var el = {};
+                el['key'] =  key;
+                el['value'] = toEntityArray[key];
+                arToreturn.push(el);
+            }
+
+            return arToreturn;
+
+
+
+
+
+
+            //==================================
+             var elFiltered = arrayEntities.filter((obj)=> {
                 return obj.first;
             });
             var arToreturn = [];
@@ -115,7 +149,7 @@ module.exports = {
             var idPaerentEntity=queryMetaData[idParent]['entityId'];
 
 
-            var toEntityArray=metadataDBstructure.arrayEntities[idPaerentEntity]['next'];
+            var toEntityArray=arrayEntities[idPaerentEntity]['next'];
 
             var arToreturn = [];
 
@@ -137,8 +171,8 @@ module.exports = {
 
     },
     getValueSelectedInID: function (idElement, queryMetaData) {
-        var entityId=queryMetaData[idElement]['entityId'];
-        if (!entityId)return 0;
-        else return entityId;
+        var arcId=queryMetaData[idElement]['arcId'];
+        if (!arcId)return 0;
+        else return arcId;
     }
 };

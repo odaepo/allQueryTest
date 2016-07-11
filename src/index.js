@@ -14,6 +14,7 @@ var queryMetaData={
         idPArent: null,
         order: 1,
         entityId: null,
+        arcId: null,
         times: 0,
         fieldToShow: {},
         treeWhere: {}

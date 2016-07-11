@@ -30,14 +30,14 @@ export function toggleFieldCheckBox(idElement,idField) {
   };
 }
 
-export function setEntityInSelect(id,idEntity) {
+export function setEntityInSelect(id,arcId) {
   // selectBook is an ActionCreator, it needs to return an action,
   // an object with a type property.
 
   return {
     type: 'SET_ENTITY_IN_SELECT',
     id,
-    idEntity
+    arcId
   };
 }
 

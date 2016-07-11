@@ -16,6 +16,16 @@ arrayEntities[i]['first']=0;
 arrayEntities[i]['fields']={};
 //names in UO interface\
 arrayEntities[i]['next']={};
+arrayEntities[i]['next'][100]='i T1';
+arcToEntity[100]=1;
+arrayEntities[i]['next'][200]='i T2';
+arcToEntity[200]=2;
+arrayEntities[i]['next'][300]='i T3';
+arcToEntity[300]=3;
+arrayEntities[i]['next'][400]='i T4';
+arcToEntity[400]=4;
+arrayEntities[i]['next'][600]='i T6';
+arcToEntity[600]=6;
 
 
 i=1;
@@ -43,7 +53,7 @@ arcToEntity[3]=6;
 i=2;
 arrayEntities[i]={};
 arrayEntities[i]['id']=i;
-arrayEntities[i]['name']='T2';
+arrayEntities[i]['name']='T2 test';
 arrayEntities[i]['usedtime']=0; //times used in UI interface
 arrayEntities[i]['names']={}; //names in UO interface
 arrayEntities[i]['first']=1;
@@ -242,5 +252,6 @@ arcToEntity[10]=1;
 
 
 module.exports = {
-    arrayEntities:arrayEntities
+    arrayEntities:arrayEntities,
+    arcToEntity:arcToEntity
 }
