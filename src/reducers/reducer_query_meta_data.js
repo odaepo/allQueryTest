@@ -20,6 +20,9 @@ export default function(state = null, action) {
                 stateCloned[action.id].entityId=null;
                 stateCloned[action.id].fieldToShow={};
                 stateCloned[action.id].times=1;
+                stateCloned[action.id].tableName='zero';
+
+
             }
             else{
                 Util.logga('uno1');
@@ -27,6 +30,7 @@ export default function(state = null, action) {
                 Util.logga('uno2');
                 stateCloned[action.id].entityId=idEntity;
                 stateCloned[action.id].arcId=action.arcId;
+                stateCloned[action.id].tableName=arrayEntities[idEntity].tableName;
                 Util.logga('uno3');
                 stateCloned[action.id].fieldToShow=arrayEntities[idEntity].fields;
                 Util.logga('uno4');

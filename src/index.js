@@ -15,6 +15,7 @@ var queryMetaData={
         order: 1,
         entityId: null,
         arcId: null,
+        tableName:'NomeTabella',
         times: 0,
         fieldToShow: {},
         treeWhere: {}

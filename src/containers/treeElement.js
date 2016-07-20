@@ -22,6 +22,7 @@ class TreeElement extends Component {
         var idElement=this.props.idElement;
         var queryMetaData=this.props.queryMetaData;
         var queryOptions=this.props.queryOptions;
+        var tableName=this.props.queryMetaData[idElement]['tableName'];
 
         console.log('console.log(queryMetaData); treeElements - 18');
         console.log(queryMetaData);
@@ -36,6 +37,7 @@ class TreeElement extends Component {
 
         console.log('figli  di:'+idElement);
         console.log(objsChildren);
+
 
         if(this.props.queryOptions.directionUI=='horizontal'){
             var elementChildren=objsChildren.map(function(ch){
@@ -74,7 +76,7 @@ class TreeElement extends Component {
                                 {select}
                                  <br />
                                 <div>
-                                    NOME
+                                    NOME {tableName}
                                     <br />
                                     <Fields idElement={idElement} queryMetaData={queryMetaData} toggleFieldCheckBox={toggleFieldCheckBox} />
                                 </div>
@@ -107,7 +109,7 @@ class TreeElement extends Component {
                             <div>
                                 {select}
                                 <br />
-                                NOME
+                                NOME {}
                                 <br />
                                 <Fields idElement={idElement} queryMetaData={queryMetaData} toggleFieldCheckBox={toggleFieldCheckBox} />
                              </div>
